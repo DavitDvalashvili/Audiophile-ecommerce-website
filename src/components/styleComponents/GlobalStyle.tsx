@@ -7,6 +7,13 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     font-family: 'Manrope', sans-serif;
    } 
+   a {
+      text-decoration: none;
+      color: inherit; 
+   }
+   body {
+      position: relative;
+   }
 
 `;
 

@@ -7,6 +7,7 @@ import {
   createRoutesFromElements,
   Route,
 } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import Header from "./components/functionalComponents/Header";
 import Footer from "./components/functionalComponents/Footer";
 import Home from "./components/functionalComponents/pages/Home";
@@ -17,9 +18,28 @@ import Checkout from "./components/functionalComponents/pages/Checkout";
 import ProductPage from "./components/functionalComponents/pages/ProductPage";
 import data from "../data.json";
 
-const router = createBrowserRouter(
+const Root = () => {
+  return (
+    <>
+      <GlobalStyle />
+      <Helmet>
+        <link
+          href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet"
+        />
+        <link rel="icon" type="image/svg+xml" href={vinylIcon} />
+        <title>Audiophile-ecommerce-website</title>
+      </Helmet>
+      <Header />
+      <Outlet />
+      <Footer />
+    </>
+  );
+};
+
+const Router = createBrowserRouter(
   createRoutesFromElements(
-    <Route>
+    <Route path="" element={<Root />}>
       <Route index element={<Home />} />
       <Route path="headphones" element={<Headphones />} />
       <Route path="earphones" element={<EarPhones />} />
@@ -37,22 +57,7 @@ const router = createBrowserRouter(
 );
 
 function App() {
-  return (
-    <>
-      <GlobalStyle />
-      <Helmet>
-        <link
-          href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
-          rel="stylesheet"
-        />
-        <link rel="icon" type="image/svg+xml" href={vinylIcon} />
-        <title>Audiophile-ecommerce-website</title>
-      </Helmet>
-      <Header />
-      <RouterProvider router={router} />
-      <Footer />
-    </>
-  );
+  return <RouterProvider router={Router} />;
 }
 
 export default App;

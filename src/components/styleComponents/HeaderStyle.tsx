@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import DefaultTheme from "./DefaultTheme";
 
-export const HeaderStyle = styled.div`
+export const HeaderStyle = styled.section`
   background-color: ${DefaultTheme.colors.black};
   color: ${DefaultTheme.colors.white};
   padding: 33px 24px 32px 24px;

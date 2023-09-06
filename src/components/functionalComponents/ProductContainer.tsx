@@ -1,4 +1,4 @@
-import { ProductBox, StoryBox } from "../styleComponents/pages/ProductBox";
+import { ProductBox, StoryBox } from "../styleComponents/ProductBox";
 import { Link } from "react-router-dom";
 import earPhones from "../../assets/home/desktop/earphones-removebg-preview.png";
 import headphones from "../../assets/home/desktop/headphones-removebg-preview.png";

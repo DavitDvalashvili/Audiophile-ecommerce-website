@@ -8,6 +8,7 @@ const DefaultTheme = {
     white: "#FFFFFF",
     black: "#000000",
     thamarBlack: " #191919",
+    shadyCharacter: "#4C4C4C",
   },
 };
 

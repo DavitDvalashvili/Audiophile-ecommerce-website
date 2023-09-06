@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import DefaultTheme from "../DefaultTheme";
+import DefaultTheme from "./DefaultTheme";
 import gearMobile from "../../../assets/shared/mobile/image-best-gear.jpg";
 import gearTablet from "../../../assets/shared/tablet/image-best-gear.jpg";
 import gearDesktop from "../../../assets/shared/desktop/image-best-gear.jpg";
@@ -108,7 +108,8 @@ export const StoryBox = styled.div`
     border-radius: 8px;
     background-image: url(${gearMobile});
     background-position: center;
-    background-size: contain;
+    background-size: cover;
+    background-repeat: no-repeat;
   }
   .textWrapper {
     text-align: center;

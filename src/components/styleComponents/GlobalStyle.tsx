@@ -13,8 +13,10 @@ const GlobalStyle = createGlobalStyle`
    }
    body {
       position: relative;
+      &::-webkit-scrollbar {
+         display: none;
+      }
    }
-
 `;
 
 export default GlobalStyle;

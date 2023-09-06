@@ -1,4 +1,4 @@
-import FooterStyle from "./FooterStyle";
+import FooterStyle from "../styleComponents/FooterStyle";
 import { Link } from "react-router-dom";
 import logo2 from "../../assets/icons/logo 2.svg";
 

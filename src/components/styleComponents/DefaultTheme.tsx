@@ -7,6 +7,7 @@ const DefaultTheme = {
     apricotWash: "#fbaf85",
     white: "#FFFFFF",
     black: "#000000",
+    thamarBlack: " #191919",
   },
 };
 

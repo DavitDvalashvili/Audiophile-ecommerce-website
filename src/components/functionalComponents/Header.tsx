@@ -4,13 +4,8 @@ import logo from "../../assets/icons/logo.svg";
 import cart from "../../assets/icons/icon-cart.svg";
 import useWindowWidth from "../../Hooks/useWindowWidth";
 import { Link } from "react-router-dom";
-import { NavigationStyle } from "../styleComponents/HeaderStyle";
-import earPhones from "../../assets/home/desktop/earphones-removebg-preview.png";
-import headphones from "../../assets/home/desktop/headphones-removebg-preview.png";
-import speakers from "../../assets/home/desktop/speaker-removebg-preview.png";
-import arrow from "../../assets/icons/icon-arrow-right.svg";
 import { useState } from "react";
-import { navType } from "../../Types";
+import { ProductContainer } from "./ProductContainer";
 
 const Header = () => {
   const width = useWindowWidth();
@@ -30,7 +25,9 @@ const Header = () => {
           onClick={handleClick}
         />
       )}
-      <img src={logo} alt="logo" />
+      <Link to="">
+        <img src={logo} alt="logo" className="logo" />
+      </Link>
       <nav>
         {width >= 1440 && (
           <ul>
@@ -52,7 +49,7 @@ const Header = () => {
       <img className="cart" src={cart} alt="cart" />
       {!hideNav && width < 1440 && (
         <div className="bg">
-          <Navigation handleClick={handleClick} />
+          <ProductContainer handleClick={handleClick} />
         </div>
       )}
     </HeaderStyle>
@@ -60,34 +57,3 @@ const Header = () => {
 };
 
 export default Header;
-
-const Navigation = ({ handleClick }: navType) => {
-  return (
-    <NavigationStyle>
-      <div className="headphones">
-        <img src={headphones} alt="headphones" id="headphone" />
-        <h1>headphones</h1>
-        <Link to="headphones" onClick={handleClick}>
-          <span>Shop</span>
-          <img src={arrow} alt="" />
-        </Link>
-      </div>
-      <div className="speakers">
-        <img src={speakers} alt="speakers" id="speaker" />
-        <h1>speakers</h1>
-        <Link to="speakers" onClick={handleClick}>
-          <span>Shop</span>
-          <img src={arrow} alt="speakers" />
-        </Link>
-      </div>
-      <div className="earPhones">
-        <img src={earPhones} alt="earPhones" id="earPhone" />
-        <h1>earPhones</h1>
-        <Link to="earphones" onClick={handleClick}>
-          <span>Shop</span>
-          <img src={arrow} alt="earPhones" />
-        </Link>
-      </div>
-    </NavigationStyle>
-  );
-};

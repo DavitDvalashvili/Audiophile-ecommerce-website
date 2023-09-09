@@ -25,11 +25,16 @@ const Home = () => {
       <section className="products">
         <div className="speakerZX9">
           <div className="imageWrapper">
-            {width < 768 && <img src={speakerMobile} alt="speaker" />}
-            {width >= 768 && width < 1440 && (
-              <img src={speakerTablet} alt="speaker" />
-            )}
-            {width >= 1440 && <img src={speakerDesktop} alt="speaker" />}
+            <img
+              src={
+                width < 768
+                  ? speakerMobile
+                  : width < 1440
+                  ? speakerTablet
+                  : speakerDesktop
+              }
+              alt="speaker"
+            />
           </div>
           <div className="textWrapper">
             <h1>ZX9 SPEAKER</h1>

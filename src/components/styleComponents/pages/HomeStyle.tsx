@@ -5,7 +5,10 @@ import bgTablet from "../../../assets/home/tablet/image-header.jpg";
 import bgDesktop from "../../../assets/home/desktop/image-hero.jpg";
 import circle from "../../../assets/icons/pattern-circles.svg";
 import speakerZx7 from "../../../assets/home/mobile/image-speaker-zx7.jpg";
+import speakerZx7Tablet from "../../../assets/home/tablet/image-speaker-zx7.jpg";
+import speakerZxrDesktop from "../../../assets/home/desktop/image-speaker-zx7.jpg";
 import earphoneMobile from "../../../assets/home/mobile/image-earphones-yx1.jpg";
+import earphoneTablet from "../../../assets/home/tablet/image-earphones-yx1.jpg";
 
 const HomeStyle = styled.div`
   .cover {
@@ -158,8 +161,9 @@ const HomeStyle = styled.div`
       }
       .imageBox {
         background-image: url(${earphoneMobile});
-        background-size: contain;
+        background-size: cover;
         background-position: center;
+        background-repeat: no-repeat;
       }
       .textBox {
         padding: 41px 24px;
@@ -213,7 +217,56 @@ const HomeStyle = styled.div`
         margin: 0 auto 40px auto;
       }
     }
+    .products {
+      padding: 29px 40px 11px 39px;
+      .speakerZX9 {
+        padding: 52px 169px 64px 171px;
+        gap: 64px;
+        background-position: center -170px;
+        .imageWrapper {
+          img {
+            height: 237px;
+          }
+        }
+        .textWrapper {
+          max-width: 349px;
+          h1 {
+            font-size: 56px;
+            line-height: 58px;
+            letter-spacing: 2px;
+            padding: unset;
+          }
+          p {
+            margin: 24px 0px 40px 0px;
+          }
+        }
+      }
+      .speakerZX7 {
+        background-image: url(${speakerZx7Tablet});
+        margin: 32px 0px;
+        padding: 101px 63.75px;
+      }
+      .earphone {
+        flex-direction: row;
+        gap: 11px;
+        div {
+          height: 320px;
+          flex: 1;
+        }
+        .imageBox {
+          background-image: url(${earphoneTablet});
+        }
+        .textBox {
+          padding: 101px 0px;
+          h1,
+          button {
+            margin-left: 41px;
+          }
+        }
+      }
+    }
   }
+
   @media (min-width: 1440px) {
     .cover {
       padding: 128px 165px 158px 165px;
@@ -225,6 +278,61 @@ const HomeStyle = styled.div`
       }
       p {
         margin: 0 0 40px 0;
+      }
+    }
+    .products {
+      padding: 101px 165px 107px 165px;
+      .speakerZX9 {
+        padding: 96px 0px 0px 0px;
+        flex-direction: row;
+        align-items: flex-start;
+        overflow: hidden;
+        gap: 138.28px;
+        background-position: -70px -50px;
+        background-size: 850px;
+        .imageWrapper {
+          img {
+            height: 493px;
+            margin-bottom: -34px;
+          }
+        }
+        .textWrapper {
+          max-width: 349px;
+          text-align: left;
+          h1 {
+            font-size: 56px;
+            line-height: 58px;
+            letter-spacing: 2px;
+            padding: 0;
+          }
+          p {
+            margin: 24px 0px 40px 0px;
+          }
+        }
+      }
+      .speakerZX7 {
+        background-image: url(${speakerZxrDesktop});
+        margin: 48px 0px;
+        padding: 101px 95px;
+      }
+      .earphone {
+        width: 100%;
+        flex-direction: row;
+        gap: 30px;
+        div {
+          height: 320px;
+          flex: 1;
+        }
+        .textBox {
+          padding: 0px;
+          h1 {
+            padding: 101px 0px 0px 95px;
+            margin: 0px 0px 32px 0px;
+          }
+          button {
+            margin-left: 95px;
+          }
+        }
       }
     }
   }

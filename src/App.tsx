@@ -11,12 +11,11 @@ import { Outlet } from "react-router-dom";
 import Header from "./components/functionalComponents/Header";
 import Footer from "./components/functionalComponents/Footer";
 import Home from "./components/functionalComponents/pages/Home";
-import Headphones from "./components/functionalComponents/pages/Headphones";
-import Speakers from "./components/functionalComponents/pages/Speakers";
-import EarPhones from "./components/functionalComponents/pages/EarPhones";
+import Pages from "./components/functionalComponents/pages/Categories";
 import Checkout from "./components/functionalComponents/pages/Checkout";
 import ProductPage from "./components/functionalComponents/pages/ProductPage";
 import data from "../data.json";
+import categories from "../dataCategories.json";
 
 const Root = () => {
   return (
@@ -41,9 +40,13 @@ const Router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="" element={<Root />}>
       <Route index element={<Home />} />
-      <Route path="headphones" element={<Headphones />} />
-      <Route path="earphones" element={<EarPhones />} />
-      <Route path="speakers" element={<Speakers />} />
+      {categories.map((category) => (
+        <Route
+          key={`${category.category}`}
+          path={`${category.category}`}
+          element={<Pages />}
+        />
+      ))}
       <Route path="checkout" element={<Checkout />} />
       {data.map((product) => (
         <Route

@@ -59,7 +59,7 @@ export const ProductBox = styled.section`
     flex-direction: row;
     gap: unset;
     padding: 108px 39px 67px 40px;
-    justify-content: space-between;
+    justify-content: space-evenly;
     div {
       width: 223px;
     }

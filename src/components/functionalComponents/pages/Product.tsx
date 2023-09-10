@@ -91,12 +91,14 @@ const Pages = () => {
           </div>
           <div className="Box">
             <h4>in the box</h4>
-            {productData.includes.map((item) => (
-              <div className="items" key={item.item}>
-                <span className="itemAmount">{`${item.quantity}X`}</span>
-                <span className="itemName">{item.item}</span>
-              </div>
-            ))}
+            <div className="itemBox">
+              {productData.includes.map((item) => (
+                <div className="items" key={item.item}>
+                  <span className="itemAmount">{`${item.quantity}X`}</span>
+                  <span className="itemName">{item.item}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
         <section className="gallery"></section>

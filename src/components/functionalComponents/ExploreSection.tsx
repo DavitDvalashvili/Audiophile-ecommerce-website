@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import {
   GalleryStyle,
   RecommendationStyle,
-} from "../styleComponents/pages/ExploreStyle";
+} from "../styleComponents/ExploreStyle";
 
 const ExploreSection = () => {
   const slugArr = [
@@ -34,7 +34,7 @@ const ExploreSection = () => {
     <>
       <GalleryStyle>
         <img
-          className="firstImage"
+          className="first"
           src={
             width < 768
               ? `${baseUrl}/${productData.gallery.first.mobile}`
@@ -45,7 +45,7 @@ const ExploreSection = () => {
           alt="galleryImageFirst"
         />
         <img
-          className="secondImage"
+          className="second"
           src={
             width < 768
               ? `${baseUrl}/${productData.gallery.second.mobile}`
@@ -56,7 +56,7 @@ const ExploreSection = () => {
           alt="galleryImageSecond"
         />
         <img
-          className="thirdImage"
+          className="third"
           src={
             width < 768
               ? `${baseUrl}/${productData.gallery.third.mobile}`

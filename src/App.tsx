@@ -13,7 +13,7 @@ import Footer from "./components/functionalComponents/Footer";
 import Home from "./components/functionalComponents/pages/Home";
 import Pages from "./components/functionalComponents/pages/Categories";
 import Checkout from "./components/functionalComponents/pages/Checkout";
-import ProductPage from "./components/functionalComponents/pages/ProductPage";
+import ProductPage from "./components/functionalComponents/pages/Product";
 import data from "../data.json";
 import categories from "../dataCategories.json";
 

@@ -1,6 +1,6 @@
 import { ProductContainer } from "../ProductContainer";
 import { StoryWrapper } from "../ProductContainer";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import PageStyle from "../../styleComponents/pages/CategoryStyle";
 import dataCategories from "../../../../dataCategories.json";
 import useWindowWidth from "../../../Hooks/useWindowWidth";
@@ -39,7 +39,9 @@ const Pages = () => {
                 {category.new && <span>NEW PRODUCT</span>}
                 <h2>{category.name}</h2>
                 <p>{category.description}</p>
-                <button>See Product</button>
+                <Link to={`${category.slug}`}>
+                  <button>See Product</button>
+                </Link>
               </div>
             </div>
           ))}

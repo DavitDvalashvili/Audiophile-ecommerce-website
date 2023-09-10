@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import DefaultTheme from "./DefaultTheme";
-import gearMobile from "../../../assets/shared/mobile/image-best-gear.jpg";
-import gearTablet from "../../../assets/shared/tablet/image-best-gear.jpg";
-import gearDesktop from "../../../assets/shared/desktop/image-best-gear.jpg";
+import gearMobile from "../../../src/assets/shared/mobile/image-best-gear.jpg";
+import gearTablet from "../../../src/assets/shared/tablet/image-best-gear.jpg";
+import gearDesktop from "../../../src/assets/shared/desktop/image-best-gear.jpg";
 
 export const ProductBox = styled.section`
   display: flex;

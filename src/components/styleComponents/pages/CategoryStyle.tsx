@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import DefaultTheme from "../DefaultTheme";
 
-const PageStyle = styled.div`
+const PageStyle = styled.section`
   h1 {
     color: ${DefaultTheme.colors.white};
     text-align: center;
@@ -65,6 +65,11 @@ const PageStyle = styled.div`
           font-size: 13px;
           letter-spacing: 1px;
           font-weight: 700;
+          transition: all 0.3s ease;
+          cursor: pointer;
+          :hover {
+            background-color: ${DefaultTheme.colors.apricotWash};
+          }
         }
       }
     }

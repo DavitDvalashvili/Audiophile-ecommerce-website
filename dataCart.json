@@ -1,0 +1,50 @@
+[
+    {  
+        "id" : 1,
+        "name": "YX1",
+        "image":  "public/assets/cart/image-yx1-earphones.jpg"  ,
+        "quality": 0,
+        "price": 599,
+        "addCart": true
+    },
+    {
+        "id" : 2,
+        "name": "XX59",
+        "image":  "public/assets/cart/image-xx59-headphones.jpg"  ,
+        "quality": 0,
+        "price": 899,
+        "addCart": false
+    },
+    {
+        "id" : 3,
+        "name": "XX99 MK I",
+        "image":  "public/assets/cart/image-xx99-mark-one-headphones.jpg"  ,
+        "quality": 1,
+        "price": 1750,
+        "addCart": false
+    },
+    {
+        "id" : 4,
+        "name": "XX99 MK II",
+        "image":  "public/assets/cart/image-xx99-mark-one-headphones.jpg"  ,
+        "quality": 2,
+        "price": 2999,
+        "addCart": false
+    },
+    {
+        "id" : 5,
+        "name": "ZX7",
+        "image":  "public/assets/cart/image-zx7-speaker.jpg"  ,
+        "quality": 0,
+        "price": 3500,
+        "addCart": false
+    },
+    {
+        "id" : 6,
+        "name": "ZX9",
+        "image":  "public/assets/cart/image-zx9-speaker.jpg"  ,
+        "quality": 3,
+        "price": 4500,
+        "addCart": false
+    }
+]

@@ -6,6 +6,7 @@ import ExploreSection from "../ExploreSection";
 import { useNavigate } from "react-router-dom";
 import { ProductContainer } from "../ProductContainer";
 import { StoryWrapper } from "../ProductContainer";
+import dataCart from "../../../../dataCart.json";
 
 const Pages = () => {
   const slugArr = [
@@ -32,6 +33,8 @@ const Pages = () => {
   const handleClick = () => {
     navigate("/");
   };
+
+  //const [add, setAdd] = useState<boolean>(false);
 
   return (
     <>
@@ -70,17 +73,24 @@ const Pages = () => {
                 >
                   -
                 </span>
+                <span className="number">{amount}</span>
                 <span
-                  className="number"
+                  className="plus"
                   onClick={() => {
                     setAmount(amount + 1);
                   }}
                 >
-                  {amount}
+                  +
                 </span>
-                <span className="plus">+</span>
               </div>
-              <button>ADD TO CART</button>
+              <button
+                onClick={() => {
+                  dataCart[index].quality = amount;
+                  setAmount(0);
+                }}
+              >
+                ADD TO CART
+              </button>
             </div>
           </div>
         </section>

@@ -6,6 +6,7 @@ import useWindowWidth from "../../Hooks/useWindowWidth";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { ProductContainer } from "./ProductContainer";
+import Cart from "./Cart";
 
 const Header = () => {
   const width = useWindowWidth();
@@ -14,6 +15,8 @@ const Header = () => {
   const handleClick = () => {
     setHideNAv(!hideNav);
   };
+
+  const [hideCart, setHideCart] = useState<boolean>(true);
 
   return (
     <HeaderStyle>
@@ -46,12 +49,20 @@ const Header = () => {
           </ul>
         )}
       </nav>
-      <img className="cart" src={cart} alt="cart" />
+      <img
+        className="cart"
+        src={cart}
+        alt="cart"
+        onClick={() => {
+          setHideCart(!hideCart);
+        }}
+      />
       {!hideNav && width < 1440 && (
         <div className="bg">
           <ProductContainer handleClick={handleClick} />
         </div>
       )}
+      {!hideCart && <Cart />}
     </HeaderStyle>
   );
 };

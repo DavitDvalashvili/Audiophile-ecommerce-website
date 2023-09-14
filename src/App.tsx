@@ -7,6 +7,7 @@ import {
   createRoutesFromElements,
   Route,
 } from "react-router-dom";
+import { createContext, useState } from "react";
 import { Outlet } from "react-router-dom";
 import Header from "./components/functionalComponents/Header";
 import Footer from "./components/functionalComponents/Footer";
@@ -16,8 +17,19 @@ import Checkout from "./components/functionalComponents/pages/Checkout";
 import ProductPage from "./components/functionalComponents/pages/Product";
 import data from "../data.json";
 import categories from "../dataCategories.json";
+import { BadgeContextType } from "./Types";
+
+export const BadgeContext = createContext<BadgeContextType | undefined>(
+  undefined
+);
 
 const Root = () => {
+  const [showBadge, setShowBadge] = useState(false);
+
+  const contextValue = {
+    showBadge,
+    setShowBadge,
+  };
   return (
     <>
       <GlobalStyle />
@@ -29,9 +41,11 @@ const Root = () => {
         <link rel="icon" type="image/svg+xml" href={vinylIcon} />
         <title>Audiophile-ecommerce-website</title>
       </Helmet>
-      <Header />
-      <Outlet />
-      <Footer />
+      <BadgeContext.Provider value={contextValue}>
+        <Header />
+        <Outlet />
+        <Footer />
+      </BadgeContext.Provider>
     </>
   );
 };

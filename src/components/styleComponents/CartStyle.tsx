@@ -34,6 +34,11 @@ const CartStyle = styled.div`
         line-height: 25px;
         text-decoration-line: underline;
         opacity: 0.5;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        :hover {
+          color: ${DefaultTheme.colors.seraphimSepia};
+        }
       }
     }
     .activeProducts {
@@ -87,6 +92,11 @@ const CartStyle = styled.div`
             .plus,
             .minus {
               opacity: 0.5;
+              cursor: pointer;
+              transition: all 0.3s ease;
+              :hover {
+                color: ${DefaultTheme.colors.seraphimSepia};
+              }
             }
             .quantity {
               opacity: unset;
@@ -123,6 +133,11 @@ const CartStyle = styled.div`
       text-transform: uppercase;
       color: ${DefaultTheme.colors.white};
       background-color: ${DefaultTheme.colors.seraphimSepia};
+      cursor: pointer;
+      transition: all 0.3s ease;
+      :hover {
+        background-color: ${DefaultTheme.colors.apricotWash};
+      }
     }
   }
   @media (min-width: 768px) {
@@ -130,6 +145,10 @@ const CartStyle = styled.div`
     .cart {
       padding: 31px 31px 31px 33px;
     }
+  }
+  @media (min-width: 1440px) {
+    top: 97px;
+    padding: 32px 165px 0px 165px;
   }
 `;
 

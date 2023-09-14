@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import DefaultTheme from "./DefaultTheme";
 
-const FooterStyle = styled.div`
+const FooterStyle = styled.footer`
   background-color: ${DefaultTheme.colors.chaosBlack};
   padding: 0px 24px 38px 24px;
   color: ${DefaultTheme.colors.white};

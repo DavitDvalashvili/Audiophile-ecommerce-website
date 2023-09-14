@@ -1,12 +1,13 @@
 import ProductStyle from "../../styleComponents/pages/ProductStyle";
 import useWindowWidth from "../../../Hooks/useWindowWidth";
 import data from "../../../../data.json";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import ExploreSection from "../ExploreSection";
 import { useNavigate } from "react-router-dom";
 import { ProductContainer } from "../ProductContainer";
 import { StoryWrapper } from "../ProductContainer";
 import dataCart from "../../../../dataCart.json";
+import { BadgeContext } from "../../../App";
 
 const Pages = () => {
   const slugArr = [
@@ -34,7 +35,8 @@ const Pages = () => {
     navigate("/");
   };
 
-  //const [add, setAdd] = useState<boolean>(false);
+  //create context to change value
+  const badgeContext = useContext(BadgeContext);
 
   return (
     <>
@@ -85,8 +87,9 @@ const Pages = () => {
               </div>
               <button
                 onClick={() => {
-                  dataCart[index].quality = amount;
+                  dataCart[index].quantity = amount;
                   setAmount(0);
+                  badgeContext?.setShowBadge(true);
                 }}
               >
                 ADD TO CART

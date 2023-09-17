@@ -1,5 +1,9 @@
 import CheckoutStyle from "../../styleComponents/CheckoutStyle";
 import dataCart from "./../../../../dataCart.json";
+import cashIcon from "./../../../assets/icons/icon-cash-on-delivery.svg";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { formType } from "../../../Types";
+import { useRef } from "react";
 
 const Checkout = () => {
   const totalPrice = dataCart.reduce(
@@ -7,124 +11,317 @@ const Checkout = () => {
     0
   );
 
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm<formType>();
+
+  const onSubmit: SubmitHandler<formType> = (data) => {
+    console.log(data);
+  };
+
+  console.log(errors);
+
+  const submitRef = useRef<HTMLButtonElement | null>(null);
+
   return (
     <CheckoutStyle>
       <div className="goBack">go back</div>
-      <form>
-        <h3>Checkout</h3>
-        <div className="billingInfo infoBox">
-          <p>Billing Details</p>
-          <div>
-            <div className="name inputWrapper">
-              <label htmlFor="name">Name</label>
-              <input type="text" id="name" placeholder="Alexei Ward" />
-            </div>
-            <div className="email inputWrapper">
-              <label htmlFor="email">Email Address</label>
-              <input type="text" id="email" placeholder="alexei@mail.com" />
-            </div>
-            <div className="phone inputWrapper">
-              <label htmlFor="phone">Phone Number</label>
-              <input type="number" id="phone" placeholder="+1 202-555-0136" />
-            </div>
-          </div>
-        </div>
-        <div className="shippingInfo infoBox">
-          <p>shipping info</p>
-          <div>
-            <div className="address inputWrapper">
-              <label htmlFor="Address">Address</label>
-              <input
-                type="text"
-                id="Address"
-                placeholder="1137 Williams Avenue"
-              />
-            </div>
-            <div className="zipCode inputWrapper">
-              <label htmlFor="zipCode">ZIP Code</label>
-              <input type="number" id="zipCode" placeholder="10001" />
-            </div>
-            <div className="city inputWrapper">
-              <label htmlFor="zipCode">City</label>
-              <input type="text" id="city" placeholder="New York" />
-            </div>
-            <div className="Country inputWrapper">
-              <label htmlFor="Country">Country</label>
-              <input type="text" id="Country" placeholder="United States" />
-            </div>
-          </div>
-        </div>
-        <div className="payment">
-          <p>payment details</p>
-          <div className="ratioBox">
-            <p>Payment Method</p>
-            <div className="eMoney">
-              <input name="payType" type="radio" id="eMoney" />
-              <label htmlFor="eMoney">e-Money</label>
-            </div>
-            <div className="cash">
-              <input name="payType" type="radio" id="cash" />
-              <label htmlFor="cash">Cash on Delivery</label>
-            </div>
-          </div>
-          <div className="eMoneyBox">
+      <div className="main">
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <h3>Checkout</h3>
+          <div className="billingInfo infoBox">
+            <p>Billing Details</p>
             <div>
-              <label htmlFor="eMoneyNumber">e-Money Number</label>
-              <input type="number" id="eMoneyNumber" placeholder="238521993" />
-            </div>
-            <div>
-              <label htmlFor="eMoneyPin">e-Money PIN</label>
-              <input type="number" id="eMoneyPin" placeholder="6891" />
-            </div>
-          </div>
-        </div>
-      </form>
-
-      <div className="summery">
-        <h3>summary</h3>
-
-        {dataCart.map((product) => (
-          <div className="productBox" key={product.id}>
-            {product.quantity > 0 && (
-              <div className="productWrapper">
-                <img src={product.image} alt="productImage" />
-                <div className="textWrapper">
-                  <span className="name">{product.name}</span>
-                  <span className="price">{`$ ${product.price.toLocaleString()}`}</span>
+              <div
+                className={errors.name ? "inputWrapper errors" : "inputWrapper"}
+              >
+                <div className="labelError">
+                  <label htmlFor="name">Name</label>
+                  <span>{errors.name?.message}</span>
                 </div>
-                <span className="quantity">{`x${product.quantity}`}</span>
+                <input
+                  placeholder="Alexei Ward"
+                  {...register("name", {
+                    required: "Name is required",
+                    maxLength: 20,
+                    minLength: 3,
+                  })}
+                />
+              </div>
+
+              <div
+                className={
+                  errors.email ? "inputWrapper errors" : "inputWrapper"
+                }
+              >
+                {" "}
+                <div className="labelError">
+                  <label htmlFor="email">Email Address</label>
+                  <span>{errors.email?.message}</span>
+                </div>
+                <input
+                  placeholder="alexei@mail.com"
+                  {...register("email", {
+                    required: "Email address is required",
+                    pattern: {
+                      value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                      message: "Please enter valid email address",
+                    },
+                  })}
+                />
+              </div>
+
+              <div
+                className={
+                  errors.phoneNumber ? "inputWrapper errors" : "inputWrapper"
+                }
+              >
+                <div className="labelError">
+                  <label htmlFor="phone">Phone Number</label>
+                  <span>{errors.phoneNumber?.message}</span>
+                </div>
+                <input
+                  placeholder="+1 202-555-0136"
+                  {...register("phoneNumber", {
+                    required: "Phone number is required",
+                    pattern: {
+                      value: /^\d{9}$/,
+                      message: "Please enter valid phone number",
+                    },
+                  })}
+                />
+              </div>
+            </div>
+          </div>
+          <div className="shippingInfo infoBox">
+            <p>shipping info</p>
+            <div>
+              <div
+                className={
+                  errors.address ? "inputWrapper errors" : "inputWrapper"
+                }
+              >
+                <div className="labelError">
+                  <label htmlFor="Address">Address</label>
+                  <span>{errors.address?.message}</span>
+                </div>
+
+                <input
+                  placeholder="1137 Williams Avenue"
+                  {...register("address", {
+                    required: "Address is required",
+                    maxLength: 40,
+                  })}
+                />
+              </div>
+
+              <div
+                className={
+                  errors.zipCode ? "inputWrapper errors" : "inputWrapper"
+                }
+              >
+                <div className="labelError">
+                  <label htmlFor="zipCode">ZIP Code</label>
+                  <span>{errors.zipCode?.message}</span>
+                </div>
+                <input
+                  placeholder="10001"
+                  maxLength={5}
+                  {...register("zipCode", {
+                    required: "Zip code is required",
+                    minLength: 5,
+                    maxLength: 5,
+                    pattern: {
+                      value: /^\d{5}$/,
+                      message: "Please enter valid zip code",
+                    },
+                  })}
+                />
+              </div>
+
+              <div
+                className={errors.city ? "inputWrapper errors" : "inputWrapper"}
+              >
+                <div className="labelError">
+                  <label htmlFor="city">City</label>
+                  <span>{errors.city?.message}</span>
+                </div>
+                <input
+                  placeholder="New York"
+                  {...register("city", {
+                    required: "City is required",
+                    maxLength: 20,
+                  })}
+                />
+              </div>
+
+              <div
+                className={
+                  errors.country ? "inputWrapper errors" : "inputWrapper"
+                }
+              >
+                <div className="labelError">
+                  <label htmlFor="Country">Country</label>
+                  <span>{errors.country?.message}</span>
+                </div>
+
+                <input
+                  placeholder="United States"
+                  {...register("country", {
+                    required: "Country is required",
+                    maxLength: 20,
+                  })}
+                />
+              </div>
+            </div>
+          </div>
+          <div className="payment">
+            <p>payment details</p>
+            <div className={errors.payType ? "radioBox errors" : "radioBox"}>
+              <div className="labelError">
+                <p>Payment Method</p>
+                <span>{errors.payType?.message}</span>
+              </div>
+
+              <div>
+                <div className="eMoney">
+                  <input
+                    type="radio"
+                    value="eMoney"
+                    {...register("payType", {
+                      required: "Payment method is required",
+                    })}
+                  />
+                  <label htmlFor="eMoney">e-Money</label>
+                </div>
+
+                <div className="cash">
+                  <input
+                    type="radio"
+                    value="cash"
+                    {...register("payType", {
+                      required: "Payment method is required",
+                    })}
+                  />
+                  <label htmlFor="cash">Cash on Delivery</label>
+                </div>
+              </div>
+            </div>
+            <div className="eMoneyBox">
+              <div className={errors.phoneNumber ? "errors" : ""}>
+                <div className="labelError">
+                  <label htmlFor="eMoneyNumber">e-Money Number</label>
+                  <span>{errors.eMoneyNumber?.message}</span>
+                </div>
+                <input
+                  placeholder="238521993"
+                  maxLength={9}
+                  {...register("eMoneyNumber", {
+                    required: "EMoney number is required",
+                    minLength: 9,
+                    maxLength: 9,
+                    pattern: {
+                      value: /^\d{9}$/,
+                      message: "Please enter valid eMoney number",
+                    },
+                  })}
+                />
+              </div>
+
+              <div className={errors.phoneNumber ? "errors" : ""}>
+                <div className="labelError">
+                  <label htmlFor="eMoneyPin">e-Money PIN</label>
+                  <span>{errors.eMoneyPin?.message}</span>
+                </div>
+
+                <input
+                  placeholder="6891"
+                  maxLength={4}
+                  {...register("eMoneyPin", {
+                    required: "EMoney pin is required",
+                    minLength: 4,
+                    maxLength: 4,
+                    pattern: {
+                      value: /^\d{4}$/,
+                      message: "Please enter valid eMoney pin",
+                    },
+                  })}
+                />
+              </div>
+            </div>
+            {watch("payType") == "cash" && (
+              <div className="cashOrDelivery">
+                <img src={cashIcon} alt="cashIcon" />
+                <p>
+                  The ‘Cash on Delivery’ option enables you to pay in cash when
+                  our delivery courier arrives at your residence. Just make sure
+                  your address is correct so that your order will not be
+                  cancelled.
+                </p>
               </div>
             )}
           </div>
-        ))}
+          <button type="submit" ref={submitRef}></button>
+        </form>
 
-        <div className="total">
-          <span className="text">Total</span>
-          <span className="number">{`$${totalPrice.toLocaleString()}`}</span>
+        <div className="summery">
+          <h3>summary</h3>
+
+          {dataCart.map((product) => (
+            <div className="productBox" key={product.id}>
+              {product.quantity > 0 && (
+                <div className="productWrapper">
+                  <img src={product.image} alt="productImage" />
+                  <div className="textWrapper">
+                    <span className="name">{product.name}</span>
+                    <span className="price">{`$ ${product.price.toLocaleString()}`}</span>
+                  </div>
+                  <span className="quantity">{`x${product.quantity}`}</span>
+                </div>
+              )}
+            </div>
+          ))}
+
+          <div className="total">
+            <span className="text">Total</span>
+            <span className="number">{`$${totalPrice.toLocaleString()}`}</span>
+          </div>
+
+          <div className="shipping">
+            <span className="text">shipping</span>
+            <span className="number">{`$${50}`}</span>
+          </div>
+
+          <div className="vat">
+            <span className="text">VAT (INCLUDED)</span>
+            <span className="number">{`$${Math.floor(
+              (totalPrice * 20) / 100
+            ).toLocaleString()}`}</span>
+          </div>
+
+          <div className="grand">
+            <span className="text">grand total</span>
+            <span className="number">
+              {`$${Math.floor(
+                (totalPrice + totalPrice * 20) / 100
+              ).toLocaleString()}`}
+            </span>
+          </div>
+
+          <button
+            type="submit"
+            onClick={() => {
+              if (submitRef.current) {
+                submitRef.current.click();
+              }
+            }}
+          >
+            CONTINUE & PAY
+          </button>
         </div>
-
-        <div className="shipping">
-          <span className="text">shipping</span>
-          <span className="number">{`$${50}`}</span>
-        </div>
-
-        <div className="vat">
-          <span className="text">VAT (INCLUDED)</span>
-          <span className="number">{`$${Math.floor(
-            (totalPrice * 20) / 100
-          ).toLocaleString()}`}</span>
-        </div>
-
-        <div className="grand">
-          <span className="text">grand total</span>
-          <span className="number">
-            {`$${Math.floor(
-              (totalPrice + totalPrice * 20) / 100
-            ).toLocaleString()}`}
-          </span>
-        </div>
-
-        <button>CONTINUE & PAY</button>
       </div>
     </CheckoutStyle>
   );

@@ -40,15 +40,17 @@ const CheckoutStyle = styled.section`
         align-items: left;
         gap: 24px;
         .inputWrapper {
-          label,
-          input {
-            display: block;
-          }
-          label {
+          .labelError {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             font-size: 12px;
             font-weight: 700;
             letter-spacing: -0.214px;
             margin-bottom: 9px;
+          }
+          input {
+            display: block;
           }
           input {
             width: 100%;
@@ -60,12 +62,17 @@ const CheckoutStyle = styled.section`
               font-size: 14px;
               font-weight: 700;
               letter-spacing: -0.25px;
-              opacity: 0.4;
             }
             :focus {
               outline: none;
               border-color: ${DefaultTheme.colors.seraphimSepia};
             }
+          }
+        }
+        .errors {
+          color: ${DefaultTheme.colors.hotLip};
+          input {
+            border: 2px solid ${DefaultTheme.colors.hotLip};
           }
         }
       }
@@ -80,14 +87,18 @@ const CheckoutStyle = styled.section`
         text-transform: uppercase;
         margin: 32px 0px 16px 0px;
       }
-      .ratioBox {
-        p {
+      .radioBox {
+        .labelError {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
           font-size: 12px;
           font-weight: 700;
           letter-spacing: -0.214px;
           margin-bottom: 17px;
         }
-        div {
+        .eMoney,
+        .cash {
           height: 56px;
           width: 100%;
           border-radius: 8px;
@@ -129,6 +140,15 @@ const CheckoutStyle = styled.section`
           }
         }
       }
+      .errors {
+        .labelError {
+          color: ${DefaultTheme.colors.hotLip};
+        }
+        .cash,
+        .eMoney {
+          border: 2px solid ${DefaultTheme.colors.hotLip};
+        }
+      }
       .eMoneyBox {
         padding-top: 16px;
         div {
@@ -137,10 +157,16 @@ const CheckoutStyle = styled.section`
           align-items: flex-start;
           gap: 9px;
           margin-bottom: 24px;
-          label {
+          .labelError {
             font-size: 12px;
             font-weight: 700;
             letter-spacing: -0.214px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            flex-direction: row;
+            margin-bottom: 9px;
           }
           input {
             width: 100%;
@@ -152,13 +178,33 @@ const CheckoutStyle = styled.section`
               font-size: 14px;
               font-weight: 700;
               letter-spacing: -0.25px;
-              opacity: 0.4;
             }
             :focus {
               outline: none;
               border-color: ${DefaultTheme.colors.seraphimSepia};
             }
           }
+        }
+        .errors {
+          .labelError {
+            color: ${DefaultTheme.colors.hotLip};
+          }
+          input {
+            border: 2px solid ${DefaultTheme.colors.hotLip};
+          }
+        }
+      }
+      .cashOrDelivery {
+        padding-top: 6px;
+        display: flex;
+        justify-content: left;
+        align-items: flex-start;
+        gap: 32px;
+        font-size: 15px;
+        font-weight: 500;
+        line-height: 25px;
+        p {
+          opacity: 0.5;
         }
       }
     }
@@ -255,6 +301,109 @@ const CheckoutStyle = styled.section`
       transition: all 0.3s ease;
       :hover {
         background-color: ${DefaultTheme.colors.apricotWash};
+      }
+    }
+    .errorMessage {
+      color: ${DefaultTheme.colors.seraphimSepia};
+      margin-top: 15px;
+      font-size: 15px;
+    }
+  }
+  @media (min-width: 768px) {
+    padding: 48px 40px 116px 39px;
+    margin: 0 auto;
+    .main {
+      max-width: 689px;
+      margin: 0 auto;
+    }
+    .goBack {
+      max-width: 768px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    form {
+      padding: 30px 27px 30px 28px;
+      h3 {
+        font-size: 32px;
+        line-height: 36px;
+        letter-spacing: 1.143px;
+      }
+      .infoBox {
+        margin-top: 41px;
+        > div {
+          flex-direction: row;
+          flex-wrap: wrap;
+          column-gap: 16px;
+          row-gap: 26px;
+          .inputWrapper {
+            input {
+              width: 309px;
+              padding: 18px 24px 19px 24px;
+            }
+          }
+        }
+      }
+      .shippingInfo {
+        padding-top: 12px;
+        > div {
+          .address {
+            input {
+              width: 634px;
+            }
+          }
+        }
+      }
+    }
+    @media (min-width: 768px) {
+      .summery {
+        padding: 32px 33px;
+      }
+    }
+    @media (min-width: 1440px) {
+      padding: 79px 165px 161px 165px;
+      .goBack {
+        max-width: 1110px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .main {
+        max-width: 1110px;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 30px;
+        form {
+          padding: 54px 48px;
+          width: 730px;
+          .payment {
+            .radioBox {
+              .labelError {
+                flex-direction: column;
+                align-items: flex-start;
+              }
+              display: flex;
+              justify-content: space-between;
+              gap: 16px;
+              align-items: flex-start;
+              .cash,
+              .eMoney {
+                width: 309px;
+              }
+            }
+            .eMoneyBox {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              input {
+                width: 309px;
+              }
+            }
+          }
+        }
+        .summery {
+          width: 350px;
+          margin-top: 0px;
+        }
       }
     }
   }

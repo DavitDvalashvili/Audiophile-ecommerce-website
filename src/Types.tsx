@@ -10,3 +10,16 @@ export interface BadgeContextType {
 export interface cartType {
   setHideCart: React.Dispatch<React.SetStateAction<boolean>>;
 }
+
+export interface formType {
+  name: string;
+  email: string;
+  phoneNumber: number;
+  address: string;
+  zipCode: number;
+  city: string;
+  country: string;
+  payType: string;
+  eMoneyNumber: number;
+  eMoneyPin: number;
+}

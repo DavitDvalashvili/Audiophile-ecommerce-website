@@ -272,6 +272,7 @@ const HomeStyle = styled.div`
       padding: 128px 165px 158px 165px;
       text-align: left;
       background-image: url(${bgDesktop});
+      background-position: right -50px;
       margin-bottom: 92px;
       h2 {
         margin: 24px 0px;
@@ -283,6 +284,9 @@ const HomeStyle = styled.div`
     .products {
       padding: 101px 165px 107px 165px;
       .speakerZX9 {
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 1110px;
         padding: 96px 0px 0px 0px;
         flex-direction: row;
         align-items: flex-start;
@@ -314,8 +318,14 @@ const HomeStyle = styled.div`
         background-image: url(${speakerZxrDesktop});
         margin: 48px 0px;
         padding: 101px 95px;
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 1110px;
       }
       .earphone {
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 1110px;
         width: 100%;
         flex-direction: row;
         gap: 30px;

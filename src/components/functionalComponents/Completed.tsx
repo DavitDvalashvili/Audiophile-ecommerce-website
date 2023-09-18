@@ -23,6 +23,7 @@ export const Completed = ({ totalPrice, setHideCompleted }: totalPriceType) => {
     badgeContext?.setShowBadge(false);
   };
 
+  const baseUrl = window.location.origin;
   const firstProduct = dataCart.find((product) => product.quantity > 0);
 
   return (
@@ -35,7 +36,10 @@ export const Completed = ({ totalPrice, setHideCompleted }: totalPriceType) => {
           <div className="productBox">
             {firstProduct && (
               <div className="product">
-                <img src={firstProduct.image} alt="productImage" />
+                <img
+                  src={`${baseUrl}/${firstProduct.image}`}
+                  alt="productImage"
+                />
                 <div className="namePrice">
                   <span>{firstProduct.name}</span>
                   <span className="price">{`$ ${(

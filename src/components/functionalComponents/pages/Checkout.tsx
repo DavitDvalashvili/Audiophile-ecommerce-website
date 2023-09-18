@@ -25,7 +25,7 @@ const Checkout = () => {
   };
 
   const submitRef = useRef<HTMLButtonElement | null>(null);
-
+  const baseUrl = window.location.origin;
   const [hideCompleted, setHideCompleted] = useState<boolean>(true);
 
   return (
@@ -277,7 +277,7 @@ const Checkout = () => {
             <div className="productBox" key={product.id}>
               {product.quantity > 0 && (
                 <div className="productWrapper">
-                  <img src={product.image} alt="productImage" />
+                  <img src={`${baseUrl}/${product.image}`} alt="productImage" />
                   <div className="textWrapper">
                     <span className="name">{product.name}</span>
                     <span className="price">{`$ ${(

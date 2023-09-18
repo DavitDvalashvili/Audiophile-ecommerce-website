@@ -13,15 +13,13 @@ const Cart = ({ setHideCart }: cartType) => {
   );
   const [quantity, setQuantity] = useState<number>(0);
 
-  //const [removeAll, setRemoveAll] = useState<boolean>(false);
-
   const badgeContext = useContext(BadgeContext);
 
   const removeAllFun = () => {
     dataCart.map((product) => {
       product.quantity = 0;
     });
-    //setRemoveAll(true);
+
     badgeContext?.setShowBadge(false);
     if (location.pathname == "/Checkout") {
       navigate("/");

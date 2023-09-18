@@ -82,6 +82,8 @@ npm run dev
 
 ### Project Structure
 
+```
+
 |--- src
 |---|---| components #components
 |---|---| hooks # custom hook
@@ -94,20 +96,15 @@ npm run dev
 
 ```
 
-- package.json # dependency manager configurations
-- data.json # needful data for project;
-- package.json # dependency manager configurations;
-- vite.config.js # fast build tool;
-
-```
+#
 
 ### Deployment
 
 Before every deployment you need to create build file.
 
 ```
-
 npm run build
+```
 
 after this you can use this file to deploy project on server.
 
@@ -118,4 +115,3 @@ after this you can use this file to deploy project on server.
 - Github profile - [Add your name here](https://github.com/DavitDvalashvili)
 - Linkedin profile - [Add your name here](https://www.linkedin.com/in/davit-dvalashvili-0421b6253)
 - Email - [@your_username](davitdvalashvili1996@gmail.com)
-```

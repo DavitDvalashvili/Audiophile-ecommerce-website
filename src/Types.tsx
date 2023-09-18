@@ -5,6 +5,8 @@ export interface navType {
 export interface BadgeContextType {
   showBadge: boolean;
   setShowBadge: React.Dispatch<React.SetStateAction<boolean>>;
+  updateBadge: boolean;
+  setUpdateBadge: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export interface cartType {
@@ -22,4 +24,9 @@ export interface formType {
   payType: string;
   eMoneyNumber: number;
   eMoneyPin: number;
+}
+
+export interface totalPriceType {
+  totalPrice: number;
+  setHideCompleted: React.Dispatch<React.SetStateAction<boolean>>;
 }

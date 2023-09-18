@@ -25,10 +25,13 @@ export const BadgeContext = createContext<BadgeContextType | undefined>(
 
 const Root = () => {
   const [showBadge, setShowBadge] = useState(false);
+  const [updateBadge, setUpdateBadge] = useState(true);
 
   const contextValue = {
     showBadge,
     setShowBadge,
+    setUpdateBadge,
+    updateBadge,
   };
   return (
     <>

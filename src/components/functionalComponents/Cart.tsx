@@ -13,7 +13,7 @@ const Cart = ({ setHideCart }: cartType) => {
   );
   const [quantity, setQuantity] = useState<number>(0);
 
-  const [removeAll, setRemoveAll] = useState<boolean>(false);
+  //const [removeAll, setRemoveAll] = useState<boolean>(false);
 
   const badgeContext = useContext(BadgeContext);
 
@@ -21,17 +21,25 @@ const Cart = ({ setHideCart }: cartType) => {
     dataCart.map((product) => {
       product.quantity = 0;
     });
-    setRemoveAll(true);
+    //setRemoveAll(true);
     badgeContext?.setShowBadge(false);
+    if (location.pathname == "/Checkout") {
+      navigate("/");
+    }
+    setHideCart(true);
   };
 
   const baseUrl = window.location.origin;
 
   const navigate = useNavigate();
   const handleClick = () => {
-    navigate("/Checkout");
-    setHideCart(true);
+    if (activeCount) {
+      navigate("/Checkout");
+      setHideCart(true);
+    }
   };
+
+  console.log(location.pathname);
 
   return (
     <CartStyle>
@@ -61,6 +69,12 @@ const Cart = ({ setHideCart }: cartType) => {
                           setQuantity(quantity - 1);
                           if (product.quantity == 0) {
                             badgeContext?.setShowBadge(false);
+                            if (activeCount == 1) {
+                              setHideCart(true);
+                              if (location.pathname == "/Checkout") {
+                                navigate("/");
+                              }
+                            }
                           }
                         }
                       }}

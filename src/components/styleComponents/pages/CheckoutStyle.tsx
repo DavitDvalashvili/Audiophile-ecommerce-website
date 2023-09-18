@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import DefaultTheme from "./DefaultTheme";
+import DefaultTheme from "../DefaultTheme";
 
 const CheckoutStyle = styled.section`
   padding: 16px 24px 92px 24px;
@@ -62,6 +62,7 @@ const CheckoutStyle = styled.section`
               font-size: 14px;
               font-weight: 700;
               letter-spacing: -0.25px;
+              color: rgba(0, 0, 0, 0.4);
             }
             :focus {
               outline: none;
@@ -178,6 +179,7 @@ const CheckoutStyle = styled.section`
               font-size: 14px;
               font-weight: 700;
               letter-spacing: -0.25px;
+              color: rgba(0, 0, 0, 0.4);
             }
             :focus {
               outline: none;

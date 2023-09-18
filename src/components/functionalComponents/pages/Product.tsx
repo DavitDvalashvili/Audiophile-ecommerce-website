@@ -41,14 +41,19 @@ const Pages = () => {
   return (
     <>
       <ProductStyle>
-        <span
-          onClick={() => {
-            navigate(`/${location.pathname.split("/").splice(0, 2).join("")}`);
-          }}
-          className="getBack"
-        >
-          Go Back
-        </span>
+        <div className="goBackWrapper">
+          <span
+            onClick={() => {
+              navigate(
+                `/${location.pathname.split("/").splice(0, 2).join("")}`
+              );
+            }}
+            className="getBack"
+          >
+            Go Back
+          </span>
+        </div>
+
         <section className="product">
           <img
             src={
@@ -90,6 +95,7 @@ const Pages = () => {
                   dataCart[index].quantity = amount;
                   setAmount(0);
                   badgeContext?.setShowBadge(true);
+                  badgeContext?.setUpdateBadge(!badgeContext.updateBadge);
                 }}
               >
                 ADD TO CART

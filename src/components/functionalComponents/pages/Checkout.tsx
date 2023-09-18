@@ -1,9 +1,10 @@
-import CheckoutStyle from "../../styleComponents/CheckoutStyle";
+import CheckoutStyle from "../../styleComponents/pages/CheckoutStyle";
 import dataCart from "./../../../../dataCart.json";
 import cashIcon from "./../../../assets/icons/icon-cash-on-delivery.svg";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { formType } from "../../../Types";
-import { useRef } from "react";
+import { useRef, useState } from "react";
+import { Completed } from "../Completed";
 
 const Checkout = () => {
   const totalPrice = dataCart.reduce(
@@ -20,15 +21,18 @@ const Checkout = () => {
 
   const onSubmit: SubmitHandler<formType> = (data) => {
     console.log(data);
+    setHideCompleted(false);
   };
-
-  console.log(errors);
 
   const submitRef = useRef<HTMLButtonElement | null>(null);
 
+  const [hideCompleted, setHideCompleted] = useState<boolean>(true);
+
   return (
     <CheckoutStyle>
-      <div className="goBack">go back</div>
+      <div className="goBack">
+        <span>go back</span>
+      </div>
       <div className="main">
         <form onSubmit={handleSubmit(onSubmit)}>
           <h3>Checkout</h3>
@@ -57,7 +61,6 @@ const Checkout = () => {
                   errors.email ? "inputWrapper errors" : "inputWrapper"
                 }
               >
-                {" "}
                 <div className="labelError">
                   <label htmlFor="email">Email Address</label>
                   <span>{errors.email?.message}</span>
@@ -211,7 +214,7 @@ const Checkout = () => {
               </div>
             </div>
             <div className="eMoneyBox">
-              <div className={errors.phoneNumber ? "errors" : ""}>
+              <div className={errors.eMoneyNumber ? "errors" : ""}>
                 <div className="labelError">
                   <label htmlFor="eMoneyNumber">e-Money Number</label>
                   <span>{errors.eMoneyNumber?.message}</span>
@@ -231,7 +234,7 @@ const Checkout = () => {
                 />
               </div>
 
-              <div className={errors.phoneNumber ? "errors" : ""}>
+              <div className={errors.eMoneyPin ? "errors" : ""}>
                 <div className="labelError">
                   <label htmlFor="eMoneyPin">e-Money PIN</label>
                   <span>{errors.eMoneyPin?.message}</span>
@@ -277,7 +280,9 @@ const Checkout = () => {
                   <img src={product.image} alt="productImage" />
                   <div className="textWrapper">
                     <span className="name">{product.name}</span>
-                    <span className="price">{`$ ${product.price.toLocaleString()}`}</span>
+                    <span className="price">{`$ ${(
+                      product.price * product.quantity
+                    ).toLocaleString()}`}</span>
                   </div>
                   <span className="quantity">{`x${product.quantity}`}</span>
                 </div>
@@ -323,6 +328,12 @@ const Checkout = () => {
           </button>
         </div>
       </div>
+      {!hideCompleted && (
+        <Completed
+          totalPrice={totalPrice}
+          setHideCompleted={setHideCompleted}
+        />
+      )}
     </CheckoutStyle>
   );
 };

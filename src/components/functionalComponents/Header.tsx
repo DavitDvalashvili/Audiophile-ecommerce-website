@@ -23,7 +23,10 @@ const Header = () => {
 
   //crete context to use value
   const badgeContext = useContext(BadgeContext);
-
+  const [updateBagde, setUpdateBadghe] = useState<boolean>(false);
+  useEffect(() => {
+    setUpdateBadghe(!updateBagde);
+  }, [badgeContext?.updateBadge]);
   return (
     <HeaderStyle>
       {width < 1440 && (

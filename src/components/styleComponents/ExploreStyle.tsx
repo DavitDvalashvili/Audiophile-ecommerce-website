@@ -107,6 +107,9 @@ export const RecommendationStyle = styled.section`
     }
   }
   @media (min-width: 1440px) {
+    max-width: 1110px;
+    margin-left: auto;
+    margin-right: auto;
     h2 {
       font-size: 32px;
       letter-spacing: 1.163px;

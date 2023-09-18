@@ -4,13 +4,14 @@ import DefaultTheme from "../DefaultTheme";
 const ProductStyle = styled.div`
   padding: 16px 24px 88px 24px;
   color: ${DefaultTheme.colors.black};
-  .getBack {
-    display: block;
+  .goBackWrapper {
     margin-bottom: 24px;
-    font-size: 15px;
-    opacity: 0.5;
-    font-weight: 500;
-    line-height: 25px;
+    .getBack {
+      font-size: 15px;
+      opacity: 0.5;
+      font-weight: 500;
+      line-height: 25px;
+    }
   }
   .product {
     img {

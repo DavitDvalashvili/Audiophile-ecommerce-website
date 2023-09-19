@@ -311,7 +311,7 @@ const Checkout = () => {
             <span className="text">grand total</span>
             <span className="number">
               {`$${Math.floor(
-                (totalPrice + totalPrice * 20) / 100
+                totalPrice + (totalPrice * 20) / 100
               ).toLocaleString()}`}
             </span>
           </div>

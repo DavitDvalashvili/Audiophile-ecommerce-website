@@ -105,9 +105,20 @@ const ProductStyle = styled.div`
         letter-spacing: 0.857px;
         font-size: 32px;
         letter-spacing: 1.143px;
+        margin-bottom: 24px;
+        text-transform: uppercase;
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 36px;
+        letter-spacing: 0.857px;
       }
       p {
         width: 100%;
+        font-size: 15px;
+        font-weight: 500;
+        line-height: 25px;
+        opacity: 0.5;
       }
     }
     .Box {
